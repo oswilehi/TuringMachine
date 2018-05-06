@@ -234,10 +234,10 @@ namespace turingMachine
                     Transition(tape, State, counterOfSteps);
                     await Task.Delay(1000)/*.Wait()*/;
                 }
-                if (inputIsCorrect)
-                    MessageBox.Show("La cadena ingresada es válida");
-                else
-                    MessageBox.Show("La cadena ingresada no es válida");
+                if (inputIsCorrect && typeOfMachine == 1)
+                    MessageBox.Show("La cadena ingresada es un palíndromo");                   
+                else if (typeOfMachine == 1)
+                    MessageBox.Show("La cadena ingresada no es palíndromo");
                 instruction.Text = "";
             }
             else
