@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
+            this.tapeOfTuring = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_actualState = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -36,16 +37,19 @@
             this.lbl_instruction = new System.Windows.Forms.Label();
             this.txt_instruction = new System.Windows.Forms.TextBox();
             this.btn_runMachine = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.tapeOfTuring)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // tapeOfTuring
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 70);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(843, 166);
-            this.dataGridView1.TabIndex = 0;
+            this.tapeOfTuring.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tapeOfTuring.ColumnHeadersVisible = false;
+            this.tapeOfTuring.Location = new System.Drawing.Point(12, 70);
+            this.tapeOfTuring.Name = "tapeOfTuring";
+            this.tapeOfTuring.RowHeadersVisible = false;
+            this.tapeOfTuring.Size = new System.Drawing.Size(843, 166);
+            this.tapeOfTuring.TabIndex = 0;
             // 
             // label1
             // 
@@ -112,6 +116,11 @@
             this.btn_runMachine.TabIndex = 7;
             this.btn_runMachine.Text = "Ejecutar";
             this.btn_runMachine.UseVisualStyleBackColor = true;
+            this.btn_runMachine.Click += new System.EventHandler(this.btn_runMachine_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // templateTuringMachine
             // 
@@ -125,12 +134,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbl_actualState);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tapeOfTuring);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "templateTuringMachine";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.templateTuringMachine_FormClosed);
             this.Load += new System.EventHandler(this.templateTuringMachine_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tapeOfTuring)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,7 +147,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tapeOfTuring;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_actualState;
         private System.Windows.Forms.Label label3;
@@ -146,5 +155,6 @@
         private System.Windows.Forms.Label lbl_instruction;
         private System.Windows.Forms.TextBox txt_instruction;
         private System.Windows.Forms.Button btn_runMachine;
+        private System.Windows.Forms.Timer timer1;
     }
 }

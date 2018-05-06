@@ -12,11 +12,6 @@ namespace turingMachine
 {
     public partial class turingMachineProcess : Form
     {
-        Dictionary<string, List<String>> palindromeMachine = new Dictionary<string, List<String>>();
-        Dictionary<string, List<String>> copyOfPatternsMachine = new Dictionary<string, List<String>>();
-        Dictionary<string, List<String>> sumMachine = new Dictionary<string, List<String>>();
-        Dictionary<string, List<String>> subtractionMachine = new Dictionary<string, List<String>>();
-        Dictionary<string, List<String>> multiplicationMachine = new Dictionary<string, List<String>>();
         public turingMachineProcess()
         {
             InitializeComponent();
@@ -31,7 +26,7 @@ namespace turingMachine
 
         private void goToPalindrome_Click(object sender, EventArgs e)
         {
-            templateTuringMachine palindromeForm = new templateTuringMachine(palindromeMachine, this);
+            templateTuringMachine palindromeForm = new templateTuringMachine(this, 1);
             palindromeForm.Text = "Palíndromo";
             palindromeForm.Show();
             this.Visible = false;
@@ -39,7 +34,7 @@ namespace turingMachine
 
         private void goToCopyOfPatterns_Click(object sender, EventArgs e)
         {
-            templateTuringMachine copyOfPatternsForm = new templateTuringMachine(copyOfPatternsMachine, this);
+            templateTuringMachine copyOfPatternsForm = new templateTuringMachine(this, 2);
             copyOfPatternsForm.Text = "Copia de patrones";
             copyOfPatternsForm.Show();
             this.Visible = false;
@@ -47,7 +42,7 @@ namespace turingMachine
 
         private void goToSum_Click(object sender, EventArgs e)
         {
-            templateTuringMachine sumForm = new templateTuringMachine(sumMachine, this);
+            templateTuringMachine sumForm = new templateTuringMachine(this, 3);
             sumForm.Text = "Suma";
             sumForm.Show();
             this.Visible = false;
@@ -55,7 +50,7 @@ namespace turingMachine
 
         private void goToSubtraction_Click(object sender, EventArgs e)
         {
-            templateTuringMachine subtractionForm = new templateTuringMachine(subtractionMachine, this);
+            templateTuringMachine subtractionForm = new templateTuringMachine(this, 4);
             subtractionForm.Text = "Resta";
             subtractionForm.Show();
             this.Visible = false;
@@ -63,7 +58,7 @@ namespace turingMachine
 
         private void goToMultiplication_Click(object sender, EventArgs e)
         {
-            templateTuringMachine multiplicationForm = new templateTuringMachine(multiplicationMachine, this);
+            templateTuringMachine multiplicationForm = new templateTuringMachine(this, 5);
             multiplicationForm.Text = "Multiplicación";
             multiplicationForm.Show();
             this.Visible = false;
