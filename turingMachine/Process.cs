@@ -45,6 +45,14 @@ namespace turingMachine
                     fillSum(turingMachine);
                     fillDefinitionOfTuringMachine(numberOfStates, "|,+,=", "|,X,+,=", "q4");
                     break;
+                case 4:
+                    fillSubtraction(turingMachine);
+                    fillDefinitionOfTuringMachine(numberOfStates, "|,-,=", "|,X,Y,-,=", "q8");
+                    break;
+                case 5:
+                    fillMultiplication(turingMachine);
+                    fillDefinitionOfTuringMachine(numberOfStates, "|,*,=", "|,X,Y,*,=", "q7");
+                    break;
             }
 
         }
@@ -201,16 +209,123 @@ namespace turingMachine
 
         public static void fillSubtraction(Dictionary<string, List<String>> turingMachine)
         {
+            List<string> q0 = new List<string>();
+            q0.Add("q1,=,=,-1");
+            q0.Add("q0,|,|,1");
+            q0.Add("q0,-,-,1");
+            q0.Add("q0,X,X,1");
+            List<string> q1 = new List<string>();
+            q1.Add("q1,X,X,-1");
+            q1.Add("q2,|,X,-1");
+            q1.Add("q4,-,-,-1");
+            List<string> q2 = new List<string>();
+            q2.Add("q2,X,X,-1");
+            q2.Add("q2,|,|,-1");
+            q2.Add("q2,-,-,-1");
+            q2.Add("q3,B,B,1");
+            List<string> q3 = new List<string>();
+            q3.Add("q3,X,X,1");
+            q3.Add("q0,|,X,1");
+            List<string> q4 = new List<string>();
+            q4.Add("q4,|,|,-1");
+            q4.Add("q5,X,X,1");
+            List<string> q5 = new List<string>();
+            q5.Add("q5,X,X,1");
+            q5.Add("q5,Y,Y,1");
+            q5.Add("q6,|,Y,1");
+            q5.Add("q8,-,-,1");
+            List<string> q6 = new List<string>();
+            q6.Add("q6,|,|,1");
+            q6.Add("q6,=,=,1");
+            q6.Add("q7,B,|,-1");
+            q6.Add("q6,-,-,1");
+            q6.Add("q6,X,X,1");
+            List<string> q7 = new List<string>();
+            q7.Add("q7,X,X,-1");
+            q7.Add("q7,Y,Y,-1");
+            q7.Add("q7,|,|,-1");
+            q7.Add("q7,-,-,-1");
+            q7.Add("q7,=,=,-1");
+            q7.Add("q5,B,B,1");
+            List<string> q8 = new List<string>();
+            q8.Add("-");
 
+            turingMachine.Add("q0", q0);
+            turingMachine.Add("q1", q1);
+            turingMachine.Add("q2", q2);
+            turingMachine.Add("q3", q3);
+            turingMachine.Add("q4", q4);
+            turingMachine.Add("q5", q5);
+            turingMachine.Add("q6", q6);
+            turingMachine.Add("q7", q7);
+            turingMachine.Add("q8", q8);
+
+            numberOfStates = turingMachine.Count;
         }
 
         public static void fillMultiplication(Dictionary<string, List<String>> turingMachine)
         {
+            // Estado al que me muevo, simbolo que estoy leyendo, simbolo por el que sustituyo, y hacia donde me muevo
+            // List for states
+            List<string> q0 = new List<string>();
+            q0.Add("q0,|,|,1");
+            q0.Add("q1,*,*,1");
+            List<string> q1 = new List<string>();
+            q1.Add("q1,X,X,1");
+            q1.Add("q2,|,X,-1");
+            List<string> q2 = new List<string>();
+            q2.Add("q2,|,|,-1");
+            q2.Add("q2,X,X,-1");
+            q2.Add("q2,*,*,-1");
+            q2.Add("q3,B,B,1");
+            List<string> q3 = new List<string>();
+            q3.Add("q3,Y,Y,1");
+            q3.Add("q8,*,*,1");
+            q3.Add("q4,|,Y,1");
+            List<string> q4 = new List<string>();
+            q4.Add("q4,=,=,1");
+            q4.Add("q4,*,*,1");
+            q4.Add("q4,|,|,1");
+            q4.Add("q4,X,X,1");
+            q4.Add("q5,B,|,-1");
+            List<string> q5 = new List<string>();
+            q5.Add("q5,=,=,-1");
+            q5.Add("q5,*,*,-1");
+            q5.Add("q5,|,|,-1");
+            q5.Add("q5,X,X,-1");
+            q5.Add("q3,Y,Y,1");
+            List<string> q6 = new List<string>();
+            q6.Add("q6,Y,|,1");
+            q6.Add("q1,*,*,1");
+            List<string> q7 = new List<string>();
+            q7.Add("-");
+            List<string> q8 = new List<string>();
+            q8.Add("q9,|,|,-1");
+            q8.Add("q7,=,=,1");
+            q8.Add("q8,X,X,1");
+            List<string> q9 = new List<string>();
+            q9.Add("q9,Y,Y,-1");
+            q9.Add("q9,*,*,-1");
+            q9.Add("q9,X,X,-1");
+            q9.Add("q6,B,B,1");
 
+            // Fill dictionary
+            turingMachine.Add("q0", q0);
+            turingMachine.Add("q1", q1);
+            turingMachine.Add("q2", q2);
+            turingMachine.Add("q3", q3);
+            turingMachine.Add("q4", q4);
+            turingMachine.Add("q5", q5);
+            turingMachine.Add("q6", q6);
+            turingMachine.Add("q7", q7);
+            turingMachine.Add("q8", q8);
+            turingMachine.Add("q9", q9);
+
+            numberOfStates = turingMachine.Count;
         }
 
         public static async void ExecuteMachine(TextBox instruction, DataGridView tape, Label State, Label counterOfSteps, int typeOfMachine)
-        {
+        {            
             //Limpiar valores
             steps = 0;
             actualState = "q0";
@@ -230,12 +345,17 @@ namespace turingMachine
                 fillDataGrid(instruction, tape);
                 while (actualState != definitionOfTuringMachine["AS"] && inputIsCorrect)
                 {
-                    await Task.Delay(1000);
-                    Transition(tape, State, counterOfSteps);
+                    if (steps == 0)
+                        await Task.Delay(1000);
+
+                    // Pintar donde va el cabezal
+                    tape.Rows[1].Cells[actualPositionInTape].Style.BackColor = Color.Aqua;
                     await Task.Delay(1000)/*.Wait()*/;
+                    Transition(tape, State, counterOfSteps);
+                    //await Task.Delay(1000)/*.Wait()*/;
                 }
                 if (inputIsCorrect && typeOfMachine == 1)
-                    MessageBox.Show("La cadena ingresada es un palíndromo");                   
+                    MessageBox.Show("La cadena ingresada es un palíndromo");
                 else if (typeOfMachine == 1)
                     MessageBox.Show("La cadena ingresada no es palíndromo");
                 instruction.Text = "";
@@ -245,7 +365,7 @@ namespace turingMachine
                 MessageBox.Show("La cadena ingresada tiene carácteres no permitidos");
                 instruction.Text = "";
             }
-            inputIsCorrect = true;              
+            inputIsCorrect = true;
         }
 
         public static void fillDataGrid(TextBox instruction, DataGridView tape)
@@ -260,11 +380,21 @@ namespace turingMachine
                     tape.Columns.Add(i.ToString(), i.ToString());
                     if (i <= instructiontxt.Length && i != 0)
                         tape[i, 0].Value = instructiontxt[i - 1].ToString();
-                    else
+                    if (i == 0)
+                    {
+                        tape.Rows.Add();
+                        tape.Rows.Add();
+                    }
+                    if (i == 0)
+                        tape[i, 0].Value = "B";
+                    if (i - 1 == text.Length)
                         tape[i, 0].Value = "B";
                     tape.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-                tape.Rows[0].Height = 163;
+                // Quitar seleccion default
+                tape.Rows[0].Cells[0].Selected = false;
+                tape.Rows[0].Height = 100;
+                tape.Rows[1].Height = 63;
                 DataGridViewCellStyle style = new DataGridViewCellStyle();
                 style.Font = new Font("Bold", 25F, GraphicsUnit.Pixel);
                 tape.Rows[0].DefaultCellStyle = style;
@@ -280,12 +410,6 @@ namespace turingMachine
                 tape[actualPositionInTape + 1, 0].Value = "B";
             }
 
-            //Pinto la celda donde va el cabezal
-            if (tape.Rows[0].Cells[actualPositionInTape].Style.BackColor == Color.Aqua)
-                tape.Rows[0].Cells[actualPositionInTape].Style.BackColor = Color.Red;
-            else
-                tape.Rows[0].Cells[actualPositionInTape].Style.BackColor = Color.Aqua;
-
             tape.HorizontalScrollingOffset = tape.HorizontalScrollingOffset + horizontalMove;
 
             //Primero leo el primer caracter de la cadena para ver si hay una transicion para ese simbolo
@@ -298,11 +422,14 @@ namespace turingMachine
                     actualState = transition[0];
                     actualMove = int.Parse(transition[3]);
                     tape.Rows[0].Cells[actualPositionInTape].Value = transition[2];
+
+                    //Despintar donde se encontraba el cabezal antes
+                    tape.Rows[1].Cells[actualPositionInTape].Style.BackColor = Color.White;
                     actualPositionInTape = actualPositionInTape + actualMove;
                     steps++;
                     State.Text = actualState;
                     counterOfSteps.Text = steps.ToString();
-                    break; 
+                    break;
                 }
                 else
                 {
@@ -365,7 +492,7 @@ namespace turingMachine
                     else
                         return false;
                 }
-            }          
+            }
             return true;
         }
     }

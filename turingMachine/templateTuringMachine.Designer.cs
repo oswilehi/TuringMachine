@@ -38,15 +38,19 @@
             this.txt_instruction = new System.Windows.Forms.TextBox();
             this.btn_runMachine = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tapeOfTuring)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tapeOfTuring
             // 
+            this.tapeOfTuring.AllowUserToDeleteRows = false;
             this.tapeOfTuring.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tapeOfTuring.ColumnHeadersVisible = false;
             this.tapeOfTuring.Location = new System.Drawing.Point(12, 70);
             this.tapeOfTuring.Name = "tapeOfTuring";
+            this.tapeOfTuring.ReadOnly = true;
             this.tapeOfTuring.RowHeadersVisible = false;
             this.tapeOfTuring.Size = new System.Drawing.Size(843, 166);
             this.tapeOfTuring.TabIndex = 0;
@@ -75,7 +79,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Perpetua Titling MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(621, 45);
+            this.label3.Location = new System.Drawing.Point(277, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(208, 22);
             this.label3.TabIndex = 3;
@@ -85,7 +89,7 @@
             // 
             this.lbl_stepsCounter.AutoSize = true;
             this.lbl_stepsCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_stepsCounter.Location = new System.Drawing.Point(835, 43);
+            this.lbl_stepsCounter.Location = new System.Drawing.Point(491, 38);
             this.lbl_stepsCounter.Name = "lbl_stepsCounter";
             this.lbl_stepsCounter.Size = new System.Drawing.Size(20, 24);
             this.lbl_stepsCounter.TabIndex = 4;
@@ -140,6 +144,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.templateTuringMachine_FormClosed);
             this.Load += new System.EventHandler(this.templateTuringMachine_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tapeOfTuring)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,5 +161,6 @@
         private System.Windows.Forms.TextBox txt_instruction;
         private System.Windows.Forms.Button btn_runMachine;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
