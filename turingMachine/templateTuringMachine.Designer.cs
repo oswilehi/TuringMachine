@@ -37,8 +37,9 @@
             this.lbl_instruction = new System.Windows.Forms.Label();
             this.txt_instruction = new System.Windows.Forms.TextBox();
             this.btn_runMachine = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.cb_speed = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tapeOfTuring)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -122,15 +123,32 @@
             this.btn_runMachine.UseVisualStyleBackColor = true;
             this.btn_runMachine.Click += new System.EventHandler(this.btn_runMachine_Click);
             // 
-            // timer1
+            // label2
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Perpetua Titling MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(618, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 22);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Velocidad";
+            // 
+            // cb_speed
+            // 
+            this.cb_speed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_speed.FormattingEnabled = true;
+            this.cb_speed.Location = new System.Drawing.Point(747, 41);
+            this.cb_speed.Name = "cb_speed";
+            this.cb_speed.Size = new System.Drawing.Size(108, 21);
+            this.cb_speed.TabIndex = 9;
             // 
             // templateTuringMachine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 253);
+            this.Controls.Add(this.cb_speed);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_runMachine);
             this.Controls.Add(this.txt_instruction);
             this.Controls.Add(this.lbl_instruction);
@@ -160,7 +178,8 @@
         private System.Windows.Forms.Label lbl_instruction;
         private System.Windows.Forms.TextBox txt_instruction;
         private System.Windows.Forms.Button btn_runMachine;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cb_speed;
     }
 }

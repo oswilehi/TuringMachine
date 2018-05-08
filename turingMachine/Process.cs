@@ -18,7 +18,6 @@ namespace turingMachine
         static int actualPositionInTape = 1;
         static int actualMove = 0;
         static int numberOfStates;
-        static int horizontalMove = 55;
         static bool inputIsCorrect = true;
         static Dictionary<string, List<String>> turingMachine = new Dictionary<string, List<String>>();
         static Dictionary<string, string> definitionOfTuringMachine = new Dictionary<string, string>();
@@ -324,7 +323,7 @@ namespace turingMachine
             numberOfStates = turingMachine.Count;
         }
 
-        public static async void ExecuteMachine(TextBox instruction, DataGridView tape, Label State, Label counterOfSteps, int typeOfMachine)
+        public static async void ExecuteMachine(TextBox instruction, DataGridView tape, Label State, Label counterOfSteps, ComboBox speed, int typeOfMachine)
         {            
             //Limpiar valores
             steps = 0;
@@ -349,8 +348,8 @@ namespace turingMachine
                         await Task.Delay(1000);
 
                     // Pintar donde va el cabezal
-                    tape.Rows[1].Cells[actualPositionInTape].Style.BackColor = Color.Aqua;
-                    await Task.Delay(1000)/*.Wait()*/;
+                    tape.CurrentCell = tape.Rows[0].Cells[actualPositionInTape];
+                    await Task.Delay(setSpeedOfProcess((speed)))/*.Wait()*/;
                     Transition(tape, State, counterOfSteps);
                     //await Task.Delay(1000)/*.Wait()*/;
                 }
@@ -381,11 +380,6 @@ namespace turingMachine
                     if (i <= instructiontxt.Length && i != 0)
                         tape[i, 0].Value = instructiontxt[i - 1].ToString();
                     if (i == 0)
-                    {
-                        tape.Rows.Add();
-                        tape.Rows.Add();
-                    }
-                    if (i == 0)
                         tape[i, 0].Value = "B";
                     if (i - 1 == text.Length)
                         tape[i, 0].Value = "B";
@@ -393,8 +387,7 @@ namespace turingMachine
                 }
                 // Quitar seleccion default
                 tape.Rows[0].Cells[0].Selected = false;
-                tape.Rows[0].Height = 100;
-                tape.Rows[1].Height = 63;
+                tape.Rows[0].Height = 163;
                 DataGridViewCellStyle style = new DataGridViewCellStyle();
                 style.Font = new Font("Bold", 25F, GraphicsUnit.Pixel);
                 tape.Rows[0].DefaultCellStyle = style;
@@ -409,9 +402,6 @@ namespace turingMachine
                 tape.Columns.Add((actualPositionInTape + 1).ToString(), (actualPositionInTape + 1).ToString());
                 tape[actualPositionInTape + 1, 0].Value = "B";
             }
-
-            tape.HorizontalScrollingOffset = tape.HorizontalScrollingOffset + horizontalMove;
-
             //Primero leo el primer caracter de la cadena para ver si hay una transicion para ese simbolo
             List<string> transitions = turingMachine[actualState];
             for (int i = 0; i < transitions.Count; i++)
@@ -422,9 +412,6 @@ namespace turingMachine
                     actualState = transition[0];
                     actualMove = int.Parse(transition[3]);
                     tape.Rows[0].Cells[actualPositionInTape].Value = transition[2];
-
-                    //Despintar donde se encontraba el cabezal antes
-                    tape.Rows[1].Cells[actualPositionInTape].Style.BackColor = Color.White;
                     actualPositionInTape = actualPositionInTape + actualMove;
                     steps++;
                     State.Text = actualState;
@@ -495,5 +482,21 @@ namespace turingMachine
             }
             return true;
         }
+
+        public static int setSpeedOfProcess(ComboBox speed)
+        {
+            if (speed.SelectedIndex > -1)
+            {
+                if (speed.SelectedItem.Equals("Alta"))
+                    return 0010;
+                else if (speed.SelectedItem.Equals("Media"))
+                    return 0500;
+                else if (speed.SelectedItem.Equals("Baja"))
+                    return 1000;
+            }
+            return 1000;
+        }
     }
+
+
 }

@@ -14,14 +14,14 @@ namespace turingMachine
     {
         public turingMachineProcess()
         {
-            InitializeComponent();
-            
+            InitializeComponent();         
         }
 
         private void turingMachine_Load(object sender, EventArgs e)
         {
             // Just center the form
             Utilities.CenterForm(this);
+            Utilities.CancelMaximizeAndMinimize(this);
         }
 
         private void goToPalindrome_Click(object sender, EventArgs e)

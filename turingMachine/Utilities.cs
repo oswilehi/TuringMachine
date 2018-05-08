@@ -15,9 +15,17 @@ namespace turingMachine
             form.Location = new Point((Screen.PrimaryScreen.Bounds.Size.Width / 2) - (form.Size.Width / 2), (Screen.PrimaryScreen.Bounds.Size.Height / 2) - (form.Size.Height / 2));
         }
 
-        public static async Task UseDelay()
+        public static void FillCombobox(ComboBox speed)
         {
-            await Task.Delay(3000); // wait for 1 second
+            speed.Items.Add("Alta");
+            speed.Items.Add("Media");
+            speed.Items.Add("Baja");
+        } 
+
+        public static void CancelMaximizeAndMinimize(Form form)
+        {
+            form.MaximizeBox = false;
+            form.MinimizeBox = false;
         }
     }
 }

@@ -24,7 +24,8 @@ namespace turingMachine
         private void templateTuringMachine_Load(object sender, EventArgs e)
         {
             Utilities.CenterForm(this);
-            
+            Utilities.FillCombobox(cb_speed);
+            Utilities.CancelMaximizeAndMinimize(this);
         }
 
         private void templateTuringMachine_FormClosed(object sender, FormClosedEventArgs e)
@@ -41,7 +42,7 @@ namespace turingMachine
         {
             //timer1.Enabled = true;
             tapeOfTuring.Columns.Clear();
-            Process.ExecuteMachine(txt_instruction,tapeOfTuring, lbl_actualState, lbl_stepsCounter, typeOfMachine);
+            Process.ExecuteMachine(txt_instruction,tapeOfTuring, lbl_actualState, lbl_stepsCounter, cb_speed, typeOfMachine);
         }
     }
 }
